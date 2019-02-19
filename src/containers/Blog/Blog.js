@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
 import './Blog.css';
 import Posts from '../Blog/Posts/Posts';
@@ -16,7 +16,7 @@ class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><NavLink to="/" exact>Home</NavLink></li>
+                            <li><NavLink to="/posts/" exact>Posts</NavLink></li>
                             <li><NavLink to={{
                                 pathname: '/new-post',
                                 hash: '#submit',
@@ -27,8 +27,10 @@ class Blog extends Component {
                 </header>
                 {/* <Route path="/" exact render={() => <h1>Home</h1>} />
                 <Route path="/" render={() => <h1>Home 2</h1>} /> */}
-                <Route path="/" exact component={Posts} />
-                <Route path="/new-post" component={NewPost} />
+                <Switch>
+                    <Route path="/new-post" component={NewPost} />
+                    <Route path="/posts" component={Posts} />
+                </Switch>
             </div>
         );
     }
